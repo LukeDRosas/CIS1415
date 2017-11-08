@@ -1,0 +1,78 @@
+#Pushing and Pulling Grades
+#Andrew Schumacher
+
+student_grades = {}
+grade_prompt = "Enter name and grade (Example: 'Dave A+'):\n"
+menu_prompt = ("1. Add/modify student grade\n"
+                "2. Delete student grade\n"
+                "3. Print student grades\n"
+                "4. Print list of grades\n"
+                "5. Print list of students\n"
+                "6. Quit\n")
+command = ''
+while command != '6':
+    command = input(menu_prompt).lower().strip()
+    if command == '1':
+        name, grade = input("Enter name and grade (Example: 'Dave D-'):").split()
+        student_grades[name] = grade
+        continue
+    elif command == '2':
+        select = input('Which student\'s key will you delete?')
+        del student_grades[select]
+        continue
+    elif command == '3':
+        for name, grade in student_grades.items():
+            print('%s: %s' % (name, grade))
+        continue
+    elif command == '4':
+        for grade in student_grades.values():
+            print(grade)
+        continue
+    elif command == '5':
+        for name in student_grades.keys():
+            print(name)
+        continue
+    elif command == '6':
+        break
+    else:
+        print('Unrecognized command.')
+        
+
+# Nested Dictionary section
+grade_list = {
+    'Blade Runner': {
+        'Homework': [70, 89, 71, 100],
+        'Quiz': 90,
+        'Test': 51
+    },
+    'Bat Man': {
+        'Homework': [100, 25, 64, 100],
+        'Quiz': 87,
+        'Test': 100
+    },
+    'Chad Gordon': {
+        'Homework': [59, 46, 100, 100],
+        'Quiz': 100,
+        'Test': 60
+    },
+}
+
+user_input = input('Enter student name: ')
+
+while user_input != 'exit':
+    if user_input in grade_list:
+        homework = grade_list[user_input]['Homework']
+        Quiz = grade_list[user_input]['Quiz']
+        Test = grade_list[user_input]['Test']
+
+        for hw, score in enumerate(homework):
+            print('Homework', hw, score)
+
+        print('Quiz:', Quiz)
+        print('Test:', Test)
+
+
+        total_points = sum([i for i in homework]) + Quiz + Test
+        print('Final percentage: %f%%' % (100*(total_points / 600.0)))
+
+    user_input = input('Enter student name to locate grades: ')
