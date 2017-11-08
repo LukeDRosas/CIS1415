@@ -1,0 +1,46 @@
+#Andrew Schumacher
+
+def get_rainfall():
+    month_num = 1
+    global rainfall_list
+    rainfall_list = []
+    while month_num <= 12:
+        print('What was the rainfall in month', month_num, 'of the year?')
+        rain_data = int(input('Rainfall in inches'))
+        rainfall_list.append(rain_data)
+        month_num +=1
+    print(rainfall_list)
+    rainfall_list
+
+
+def sum():
+    global sum_for_year
+    sum_for_year = 0
+    for num in rainfall_list:
+        sum_for_year += num
+    print(sum_for_year, 'is the total rainfall in inches this year\n')
+
+def average_rainfall():
+    avg_year = sum_for_year / 12
+    print(avg_year 'is the average rainfall per month\n')
+    
+def what_is_max():
+    max = None
+    for num in rainfall_list:     
+        if max == None or num > max:
+            max = num
+    print(max, 'is the max rainfall in a month this year\n')
+ 
+def what_is_min():
+    min = None
+    for num in rainfall_list:     
+        if min == None or num < min:
+            min = num
+    print(min, 'is the minimum rainfall in a month this year\n')    
+    
+    
+get_rainfall()
+sum()
+average_rainfall()
+what_is_max()
+what_is_min()
