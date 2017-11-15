@@ -1,0 +1,113 @@
+class ItemToPurchase:
+    def __init__(self, item_name='none', item_price=0, item_quantity=0, item_description='none'):
+        self.item_name = str(item_name)
+        self.item_price = float(item_price)
+        self.item_quantity = int(item_quantity)
+        self.item_description = str(item_description)
+        
+    def print_item_description(self):
+        print(self.item_name, ': ', self.item_description, sep='')
+    
+    def calculate_cost(self):
+        cost = self.item_price * float(self.item_quantity)
+        return cost
+    
+    def print_item_cost(self):
+        cost = self.calculate_cost()
+        cost = int(cost)
+        print(self.item_name, ' ', self.item_quantity, ' @ $', int(self.item_price), ' = $', cost, sep='')
+        return cost
+    
+class ShoppingCart:
+    def __init__(self, customer_name="none", date="January 1, 2016"):
+        self.customer_name = str(customer_name)
+        self.date = str(date)
+        self.cart_items = []
+
+    def add_items(self, item_to_purchase):
+        self.cart_items.append(item_to_purchase)
+        
+    #def remove_item(self):
+   #     if cart_items.count(self.item_name) > 0:
+  #          cart_items.remove(self.item_name)
+ #       else:
+#            print("Item not found in cart. Nothing removed.")
+            
+    #def modify_item(ItemToPurchase):
+     #   if cart_items.count(self.item_name) > 0:
+    #        ItemToPurchase.item_price = float(input('Enter the item price:\n'))
+   #         ItemToPurchase.item_quantity = int(input('Enter the item quantity:\n'))
+  #          ItemToPurchase.item_description = str(input('Enter the item description:\n'))
+ #       else:
+#            print("Item not found in cart. Nothing modified.")
+            
+    def print_descriptions(self):
+        print('John Doe\'s Shopping Cart -', self.date)
+        print('')
+        print('Item Descriptions')
+        for x in cart.cart_items:
+            print(x.item_name, ': ', x.item_description, sep='')
+    
+            
+    def num_items(self):
+        sum = 0
+        for x in cart.cart_items:
+            sum += x.item_quantity
+        return sum
+
+
+    def get_cost_of_cart(self):
+        cost_of_item = 0
+        total_cost = 0
+        for x in cart.cart_items:
+            cost_of_item = x.calculate_cost()
+            total_cost += cost_of_item
+        return total_cost
+    
+    def print_total(self):
+        print('John Doe\'s Shopping Cart -', self.date)
+        print('Number of Items:', cart.num_items())
+        print('')
+                
+if __name__ == "__main__":
+    item1 = ItemToPurchase()
+    print('Item 1')
+    item1.item_name = str(input('Enter the item name:\n'))
+    item1.item_price = float(input('Enter the item price:\n'))
+    item1.item_quantity = int(input('Enter the item quantity:\n'))
+    item1.item_description = str(input('Enter the item description:\n'))
+    print('')
+    item2 = ItemToPurchase()
+    print('Item 2')
+    item2.item_name = str(input('Enter the item name:\n'))
+    item2.item_price = float(input('Enter the item price:\n'))
+    item2.item_quantity = int(input('Enter the item quantity:\n'))
+    item2.item_description = str(input('Enter the item description:\n'))
+    print('')
+    item3 = ItemToPurchase()
+    print('Item 3')
+    item3.item_name = str(input('Enter the item name:\n'))
+    item3.item_price = float(input('Enter the item price:\n'))
+    item3.item_quantity = int(input('Enter the item quantity:\n'))
+    item3.item_description = str(input('Enter the item description:\n'))
+ 
+    
+    cart_name = str(input("What is the cart name?"))
+    date = str(input("What is the cart date?"))
+    
+    cart = ShoppingCart(cart_name, date)
+    cart.add_items(item1)
+    cart.add_items(item2)
+    cart.add_items(item3)
+    
+    cart.print_total()
+    for x in cart.cart_items:
+        x.print_item_cost()
+    print('')
+    total_cost = int(cart.get_cost_of_cart())
+    print('Total: $', total_cost, sep='')    
+     
+    cart.print_descriptions()
+        
+        
+        
